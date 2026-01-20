@@ -1,6 +1,6 @@
 <?php
 require_once "controller/OwnerController.class.php";
-require_once "controller/PetController.class.php";
+//require_once "controller/PetController.class.php";
 
 class MainController {
 
@@ -22,13 +22,15 @@ class MainController {
                 break;
 
             // pet
-            case "pet":
-                $controlPet=new PetController();
-                $controlPet->processRequest();
-                break;
-                
+            //case "pet":
+            //    $controlPet=new PetController();
+            //    $controlPet->processRequest();
+            //    break;
+
             default:
-                // TODO: pàgina d'inici
+                // pàgina d'inici
+                $controlOwner=new OwnerController();
+                $controlOwner->showHome();
                 break;
         }
 
