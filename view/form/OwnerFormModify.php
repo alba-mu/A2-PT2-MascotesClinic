@@ -83,7 +83,7 @@
                                     </label>
                                     <input
                                         type="email"
-                                        class="form-control form-control-lg border-2 shadow-sm <?php if (isset($content) && $content != NULL) { echo 'input-editable'; } ?>"
+                                        class="form-control form-control-md border-2 shadow-sm <?php if (isset($content) && $content != NULL) { echo 'input-editable'; } ?>"
                                         id="emailField"
                                         placeholder="exemple@email.com"
                                         name="email"
@@ -100,7 +100,7 @@
                                     </label>
                                     <input
                                         type="text"
-                                        class="form-control form-control-lg border-2 shadow-sm <?php if (isset($content) && $content != NULL) { echo 'input-editable'; } ?>"
+                                        class="form-control form-control-md border-2 shadow-sm <?php if (isset($content) && $content != NULL) { echo 'input-editable'; } ?>"
                                         id="movilField"
                                         placeholder="999999999"
                                         name="movil"

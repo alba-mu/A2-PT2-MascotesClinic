@@ -290,3 +290,57 @@ html, body {
 .border-clinic-light {
     border-color: #aad3dc !important;
 }
+
+/* ========================================
+   HOME PAGE
+======================================== */
+.hero-section {
+    background: linear-gradient(135deg, #469387 0%, #357367 100%);
+    border-top: 5px solid #e69739;
+}
+
+.hero-icon {
+    font-size: 4rem;
+    color: #efc65d;
+}
+
+.card-border-primary {
+    border-top: 4px solid #469387 !important;
+}
+
+.card-border-orange {
+    border-top: 4px solid #e69739 !important;
+}
+
+.card-border-light {
+    border-top: 4px solid #aad3dc !important;
+}
+
+.card-icon {
+    font-size: 3rem;
+}
+
+.icon-primary {
+    color: #469387;
+}
+
+.icon-orange {
+    color: #e69739;
+}
+
+.title-primary {
+    color: #469387;
+}
+
+.title-orange {
+    color: #e69739;
+}
+
+.info-icon {
+    font-size: 1.5rem;
+}
+
+.info-alert {
+    background-color: #aad3dc;
+    color: #469387;
+}

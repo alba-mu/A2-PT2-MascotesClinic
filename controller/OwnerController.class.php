@@ -191,7 +191,7 @@ class OwnerController {
 
     // shows home page
     public function showHome() {
-        $this->view->display();
+        $this->view->display("view/HomePage.php");
     }
 
 }
