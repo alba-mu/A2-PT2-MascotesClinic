@@ -49,7 +49,8 @@ class OwnerFormValidation {
             }
         }
         
-        $owner=new Owner($id, $email, $movil);
+        // only id/email/movil are collected; name stays null to avoid misaligned fields
+        $owner=new Owner($id, NULL, $email, $movil);
         
         return $owner;
     }

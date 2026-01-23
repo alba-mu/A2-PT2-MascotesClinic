@@ -41,12 +41,20 @@ class OwnerModel {
     /**
     * select an owner by Id
     * @param $id string Owner Id
+    * @param $withPets bool include pets list
+    * @return Owner object or NULL
+    */
+    public function getOwnerById($id, bool $withPets=false) {
+        return $this->dataOwner->findById($id, $withPets);
+    }
+
+    /**
+    * select an owner by Id
+    * @param $id string Owner Id
     * @return Owner object or NULL
     */
     public function searchById($id) {
-        $owner=$this->dataOwner->searchById($id);
-
-        return $owner;
+        return $this->getOwnerById($id, false);
     }    
 
 }

@@ -80,25 +80,13 @@ class OwnerController {
 
     // executa l'acció de buscar mascotes por id de propietari
     public function listPets() {
-        $id=trim(filter_input(INPUT_POST, 'id'));
+        $owner=$this->fetchOwnerFromRequest(true);
 
-        $result=NULL;
-        if (!empty($id)) {
-            $result=$this->model->listPets($id);            
-            if (!empty($result)) { 
-                $_SESSION['info']="Data found"; 
-            }
-            else {
-                $_SESSION['error']=OwnerMessage::ERR_FORM['not_found'];
-            }
-            
-            $this->view->display("view/form/OwnerListPets.php", $result);
+        if ($owner) {
+            $_SESSION['info']=OwnerMessage::INF_FORM['found'];
         }
-        else {
-            $_SESSION['error']=OwnerMessage::ERR_FORM['invalid_id'];
-            
-            $this->view->display("view/form/OwnerFormSearchPets.php", $result);
-        }
+
+        $this->view->display("view/form/OwnerFormSearchPets.php", $owner);
     }
 
     // carrega el formulari de modificar per id propietari
@@ -116,22 +104,31 @@ class OwnerController {
 
     // executa l'acció de buscar propietari per id de propietari
     public function searchById() {
-        $ownerValid=OwnerFormValidation::checkData(OwnerFormValidation::SEARCH_FIELDS);
-        
-        if (empty($_SESSION['error'])) {
-            $owner=$this->model->searchById($ownerValid->getId());
+        $owner=$this->fetchOwnerFromRequest(false);
 
-            if (!is_null($owner)) { // is NULL or Owner object?
-                $_SESSION['info']=OwnerMessage::INF_FORM['found'];
-                $ownerValid=$owner;
-            }
-            else {
-                $_SESSION['error']=OwnerMessage::ERR_FORM['not_found'];
-            }
+        if ($owner) {
+            $_SESSION['info']=OwnerMessage::INF_FORM['found'];
         }
             
-        $this->view->display("view/form/OwnerSearchPets.php", $ownerValid);
-    }    
+        $this->view->display("view/form/OwnerFormModify.php", $owner);
+    }
+
+    // valida l'id rebut i retorna l'Owner amb o sense mascotes
+    private function fetchOwnerFromRequest(bool $withPets=false) {
+        $ownerInput=OwnerFormValidation::checkData(OwnerFormValidation::SEARCH_FIELDS);
+
+        if (!empty($_SESSION['error'])) {
+            return NULL;
+        }
+
+        $owner=$this->model->getOwnerById($ownerInput->getId(), $withPets);
+
+        if (is_null($owner)) {
+            $_SESSION['error'][]=OwnerMessage::ERR_FORM['not_found'];
+        }
+
+        return $owner;
+    }
 
     // mostra la pàgina d'inici
     public function showHome() {

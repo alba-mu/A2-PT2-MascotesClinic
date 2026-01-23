@@ -1,6 +1,7 @@
 <?php
 
 require_once "model/persist/ConnectDb.class.php";
+require_once "model/Pet.class.php";
 
 class OwnerDbDAO {
 
@@ -74,11 +75,24 @@ class OwnerDbDAO {
     }
 
     public function searchById($id) {
+        return $this->findById($id, false);
+    }
+
+    public function findById($id, bool $withPets=false) {
         if ($this->connect == NULL) {
             $_SESSION['error'] = "Unable to connect to database";
             return NULL;
-        };
+        }
 
+        $owner = $this->fetchOwner($id);
+        if ($owner && $withPets) {
+            $owner->setPetsList($this->fetchPets($id));
+        }
+
+        return $owner;
+    }
+
+    private function fetchOwner($id) {
         try {
             $sql = <<<SQL
                 SELECT id,nom,email,movil FROM propietaris WHERE id=:id;
@@ -86,18 +100,37 @@ class OwnerDbDAO {
 
             $stmt = $this->connect->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-
             $stmt->execute();
 
             if ($stmt->rowCount()) {
                 $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Owner');
                 return $stmt->fetch();
-            } else {
-                return NULL;
             }
+
+            return NULL;
         } catch (PDOException $e) {
             return NULL;
         }
+    }
+
+    private function fetchPets($ownerId): array {
+        $pets = array();
+        try {
+            $sql = <<<SQL
+                SELECT id, nom, propietari_id FROM mascotes WHERE propietari_id=:ownerId;
+            SQL;
+
+            $stmt = $this->connect->prepare($sql);
+            $stmt->bindParam(":ownerId", $ownerId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'Pet');
+            $pets = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            return $pets;
+        }
+
+        return $pets;
     }
 
 }
