@@ -1,4 +1,10 @@
 <?php
+/**
+ * File: index.php
+ * Description: Main application entry point. Sets up base URL constants, establishes session,
+ * includes necessary classes, and handles page structure with header, main controller, and footer.
+ * This is the single point of entry for all application requests.
+ */
     session_start();
 
     $host = $_SERVER['HTTP_HOST']; // localhost

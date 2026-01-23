@@ -1,9 +1,22 @@
 <?php
+/**
+ * File: Pet.class.php
+ * Description: Entity class representing a pet with properties for id, name, and owner identifier.
+ * Used to store pet information associated with an owner.
+ */
+
 class Pet {
     private $id;
     private $nom;
     private $propietari_id;
 
+    /**
+     * Constructor for Pet class
+     * 
+     * @param int|null $id Pet identifier
+     * @param string|null $nom Pet name
+     * @param int|null $propietari_id Owner identifier (foreign key)
+     */
     public function __construct($id=NULL, $nom=NULL, $propietari_id=NULL) {
         $this->id=$id;
         $this->nom=$nom;

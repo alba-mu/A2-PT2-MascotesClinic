@@ -1,4 +1,10 @@
 <?php
+/**
+ * File: OwnerFormValidation.class.php
+ * Description: Form validation utility class with regex patterns and field validation logic.
+ * Validates owner-related form inputs including ID, email, and mobile number.
+ * Returns validated Owner object with error messages stored in session if validation fails.
+ */
 
 class OwnerFormValidation {
 
@@ -9,6 +15,15 @@ class OwnerFormValidation {
     const EMAIL = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     const MOBILE = "/^[0-9]{9}$/";
     
+    /**
+     * Static method to validate form data and return Owner object
+     * Validates fields according to MODIFY_FIELDS or SEARCH_FIELDS constants
+     * Stores validation error messages in $_SESSION['error'] array
+     * Only validates ID, email, and mobile fields; name field excluded to avoid field misalignment
+     * 
+     * @param array $fields Array of field names to validate
+     * @return Owner Owner object with validated data (name is always NULL)
+     */
     public static function checkData($fields) {
         $id=NULL;
         $email=NULL;
@@ -27,7 +42,6 @@ class OwnerFormValidation {
                     }
                     break;
                 case 'id_hidden':
-                    // Obtener ID del campo oculto cuando se guarda
                     $id=trim(filter_input(INPUT_POST, 'id_hidden'));
                     if ($id === '') {
                         array_push($_SESSION['error'], 'ID del propietari no disponible');

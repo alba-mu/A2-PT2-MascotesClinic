@@ -1,4 +1,10 @@
 <?php
+/**
+ * File: Owner.class.php
+ * Description: Entity class representing a pet owner with properties for id, name, email, and mobile number.
+ * Includes methods for managing pets associated with the owner.
+ */
+
 class Owner {
     
     private $id;
@@ -7,6 +13,14 @@ class Owner {
     private $movil; 
     private $petsList; // array of Pet objects
 
+    /**
+     * Constructor for Owner class
+     * 
+     * @param int|null $id Owner identifier
+     * @param string|null $nom Owner name
+     * @param string|null $email Owner email address
+     * @param string|null $movil Owner mobile phone number
+     */
     public function __construct($id=NULL, $nom=NULL, $email=NULL, $movil=NULL) {
         $this->id=$id;
         $this->nom=$nom;
@@ -47,11 +61,11 @@ class Owner {
     }
 
     public function getPetsList() {
-        return $this->petsList; // array of Pet objects
+        return $this->petsList;
     }
 
     public function setPetsList($petsList) {
-        $this->petsList=$petsList; // array of Pet objects
+        $this->petsList=$petsList;
     }
 
     public function __toString() {

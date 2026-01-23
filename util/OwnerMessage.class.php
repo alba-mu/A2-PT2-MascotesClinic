@@ -1,4 +1,9 @@
 <?php
+/**
+ * File: OwnerMessage.class.php
+ * Description: Message constants container for form validation and database operation feedback.
+ * Provides multilingual (Catalan) messages for success and error notifications to be displayed to users.
+ */
 
 class OwnerMessage {
 

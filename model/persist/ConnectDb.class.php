@@ -1,11 +1,22 @@
 <?php
+/**
+ * File: ConnectDb.class.php
+ * Description: Database connection handler. Establishes and manages PDO connection to MySQL database.
+ * Handles connection errors and provides connection object to data access objects.
+ */
+
 class ConnectDb {
     
     public function __construct() {  
         
     }
     
-    // connexió a la BD
+    /**
+     * Establishes and returns a PDO database connection
+     * Handles connection to MySQL mascotesClinic database with proper error handling
+     * 
+     * @return PDO|null PDO connection object on success, NULL on failure
+     */
     public function getConnection() {
         $hostname='192.168.143.166'; // servidor de bases de dades (maquina virtual - proven)
         //$hostname='localhost'; // XAMPP local

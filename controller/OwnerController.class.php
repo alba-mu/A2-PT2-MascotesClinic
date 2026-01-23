@@ -1,35 +1,49 @@
 <?php
+/**
+ * File: OwnerController.class.php
+ * Description: Controller for owner-related operations. Handles request routing and coordinates between
+ * model (OwnerModel) and view (OwnerView). Manages form validation, database operations, and view rendering.
+ */
+
 require_once "view/OwnerView.class.php";
 require_once "model/OwnerModel.class.php";
 require_once "model/Owner.class.php";
 require_once "util/OwnerMessage.class.php";
 require_once "util/OwnerFormValidation.class.php";
 
+/**
+ * OwnerController - Controller for Owner Entity
+ * Manages owner CRUD operations, form validation, and view rendering
+ * Implements MVC pattern for owner-related functionality
+ */
 class OwnerController {
 
     private $view;
     private $model;
 
     public function __construct() {
-        // carrega la vista
         $this->view=new OwnerView();
-
-        // carrega el model de dades
         $this->model=new OwnerModel();
     }
 
-    // carrega la vista segons l'opció o executa una acció específica
+    /**
+     * Main request processor - routes requests to appropriate action methods
+     * Handles both POST (form actions) and GET (menu options) requests
+     * Initializes session arrays for info and error messages
+     * 
+     * @return void
+     */
     public function processRequest() {
         
         $request=NULL;
         $_SESSION['info']=array();
         $_SESSION['error']=array();
         
-        // recupera l'acció d'un formulari
+        // Get action from POST request
         if (filter_has_var(INPUT_POST, 'action')) {
             $request=filter_has_var(INPUT_POST, 'action')?filter_input(INPUT_POST, 'action'):NULL;
         }
-        // recupera l'opció d'un menú
+        // Get menu option from GET request
         else {
             $request=filter_has_var(INPUT_GET, 'option')?filter_input(INPUT_GET, 'option'):NULL;
         }
@@ -58,7 +72,12 @@ class OwnerController {
         }
     }
 
-    // executa l'acció de mostrar tots els propietaris
+    /**
+     * Displays list of all owners from the database
+     * Sets error message if no owners found
+     * 
+     * @return void
+     */
     public function listAll() {
         $owners=$this->model->listAll();
         
@@ -69,25 +88,45 @@ class OwnerController {
         $this->view->display("view/form/OwnerList.php", $owners);
     }
 
-    // carga el formulario de buscar mascotes per Id de propietari
+    /**
+     * Displays the search form for finding pets by owner ID
+     * 
+     * @return void
+     */
     public function formListPets() {
         $this->view->display("view/form/OwnerFormSearchPets.php");
     }  
 
 
-    // executa l'acció de buscar mascotes por id de propietari
+    /**
+     * Executes action to search and display pets for a specific owner
+     * Validates owner ID and retrieves associated pets
+     * 
+     * @return void
+     */
     public function listPets() {
         $owner=$this->fetchOwnerFromRequest(true);
 
         $this->view->display("view/form/OwnerFormSearchPets.php", $owner);
     }
 
-    // carrega el formulari de modificar per id propietari
+    /**
+     * Displays the owner modification form (search + edit panel)
+     * Allows user to enter owner ID to load their data
+     * 
+     * @return void
+     */
     public function formModify() {
         $this->view->display("view/form/OwnerFormModify.php");
     }  
 
-    // executa l'acció de modificar propietari    
+    /**
+     * Executes action to save modified owner data
+     * Validates email and mobile fields, updates database, reloads owner data
+     * Sets success or error messages based on operation result
+     * 
+     * @return void
+     */
     public function modify() {
         // Validar email y móvil, pero también obtener el ID del campo oculto
         $ownerInput=OwnerFormValidation::checkData(array_merge(OwnerFormValidation::MODIFY_FIELDS, array('id_hidden')));
@@ -114,14 +153,26 @@ class OwnerController {
     
     
 
-    // executa l'acció de buscar propietari per id de propietari
+    /**
+     * Executes action to search and display owner by ID
+     * Used by modification form to load owner data for editing
+     * 
+     * @return void
+     */
     public function searchById() {
         $owner=$this->fetchOwnerFromRequest(false);
             
         $this->view->display("view/form/OwnerFormModify.php", $owner);
     }
 
-    // valida l'id rebut i retorna l'Owner amb o sense mascotes
+    /**
+     * Private helper method to validate owner ID and fetch owner from database
+     * Used by both search and list pets actions to avoid code duplication
+     * Sets error message if owner not found
+     * 
+     * @param bool $withPets Whether to include associated pets in result
+     * @return Owner|null Owner object if found and valid, NULL otherwise
+     */
     private function fetchOwnerFromRequest(bool $withPets=false) {
         $ownerInput=OwnerFormValidation::checkData(OwnerFormValidation::SEARCH_FIELDS);
 
@@ -138,7 +189,7 @@ class OwnerController {
         return $owner;
     }
 
-    // mostra la pàgina d'inici
+    // shows home page
     public function showHome() {
         $this->view->display();
     }

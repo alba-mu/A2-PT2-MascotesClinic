@@ -1,6 +1,16 @@
 <?php
+/**
+ * File: OwnerModel.class.php
+ * Description: Business logic layer for owner operations. Acts as intermediary between controller and database layer.
+ * Provides methods for querying and modifying owner data.
+ */
+
 require_once "model/persist/OwnerDbDAO.class.php";
 
+/**
+ * OwnerModel - Business Logic Layer
+ * Manages owner-related operations and delegates database operations to OwnerDbDAO
+ */
 class OwnerModel {
 
     private $dataOwner;
