@@ -9,6 +9,8 @@ class Pet {
     private $id;
     private $nom;
     private $propietari_id;
+    private $owner; // Owner object (optional)
+    private $history; // array of PetHistory objects (optional)
 
     /**
      * Constructor for Pet class
@@ -45,5 +47,21 @@ class Pet {
 
     public function setPropietariId($propietari_id) {
         $this->propietari_id=$propietari_id;
+    }
+
+    public function getOwner() {
+        return $this->owner;
+    }
+
+    public function setOwner($owner) {
+        $this->owner=$owner;
+    }
+
+    public function getHistory() {
+        return $this->history;
+    }
+
+    public function setHistory($history) {
+        $this->history=$history;
     }
 }

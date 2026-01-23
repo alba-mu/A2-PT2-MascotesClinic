@@ -6,7 +6,7 @@
  */
 
 require_once "controller/OwnerController.class.php";
-//require_once "controller/PetController.class.php";
+require_once "controller/PetController.class.php";
 
 /**
  * MainController - Primary Request Router
@@ -35,10 +35,10 @@ class MainController {
                 $controlOwner->processRequest();
                 break;
 
-            //case "pet":
-            //    $controlPet=new PetController();
-            //    $controlPet->processRequest();
-            //    break;
+            case "pet":
+                $controlPet=new PetController();
+                $controlPet->processRequest();
+                break;
 
             default:
                 $controlOwner=new OwnerController();
