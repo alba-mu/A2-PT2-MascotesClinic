@@ -1,21 +1,21 @@
--- Crear la base de dades
+-- Create the database
 CREATE DATABASE IF NOT EXISTS mascotesClinic
   DEFAULT CHARACTER SET utf8mb4
   COLLATE utf8mb4_unicode_ci;
 
--- Configurar usuari amb accés des de qualsevol IP
+-- Create user with access from any IP
 CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON mascotesClinic.* TO 'user'@'%';
 FLUSH PRIVILEGES;
 
 USE mascotesClinic;
 
--- Esborrar taules si ja existeixen per evitar errors
+-- Drop tables if they exist to avoid errors
 DROP TABLE IF EXISTS historial;
 DROP TABLE IF EXISTS mascotes;
 DROP TABLE IF EXISTS propietaris;
 
--- Taula Propietaris
+-- Owners table
 CREATE TABLE IF NOT EXISTS propietaris (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(150) NOT NULL,
@@ -23,14 +23,14 @@ CREATE TABLE IF NOT EXISTS propietaris (
   movil VARCHAR(15)
 ) ENGINE=InnoDB;
 
--- Taula Mascotes
+-- Pets table
 CREATE TABLE IF NOT EXISTS mascotes (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(150) NOT NULL,
   propietari_id INT NOT NULL
 ) ENGINE=InnoDB;
 
--- Taula Lineas d'Historial
+-- Medical history records table
 CREATE TABLE IF NOT EXISTS historial (
   id INT AUTO_INCREMENT PRIMARY KEY,
   data DATE NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS historial (
   mascota_id INT NOT NULL
 ) ENGINE=InnoDB;
 
--- Claus foranes
+-- Foreign key constraints
 ALTER TABLE mascotes
   ADD CONSTRAINT fk_mascotes_propietaris
     FOREIGN KEY (propietari_id)
@@ -52,14 +52,14 @@ ALTER TABLE historial
     REFERENCES mascotes(id)
     ON DELETE CASCADE;
 
--- Inserir dades de prova per a Propietaris
+-- Insert test data for Owners
 INSERT INTO propietaris (nom, email, movil) VALUES
 ('Joan Garcia', 'joan.garcia@email.com', '600111222'),
 ('Marta Rovira', 'marta.rovira@email.com', '611222333'),
 ('Pere Soler', 'pere.soler@email.com', '622333444');
 
--- Inserir dades de prova per a Mascotes
--- Recorda: propietari_id 1=Joan, 2=Marta, 3=Pere
+-- Insert test data for Pets
+-- Remember: owner_id 1=Joan, 2=Marta, 3=Pere
 INSERT INTO mascotes (nom, propietari_id) VALUES
 ('Buddy', 1), 
 ('Luna', 1), 
@@ -67,8 +67,8 @@ INSERT INTO mascotes (nom, propietari_id) VALUES
 ('Miau', 3),  
 ('Nala', 3);  
 
--- Inserir dades de prova per a Línies d'Historial
--- mascota_id: 1=Buddy, 2=Luna, 3=Rex, 4=Miau, 5=Nala
+-- Insert test data for Medical History records
+-- Remember: pet_id 1=Buddy, 2=Luna, 3=Rex, 4=Miau, 5=Nala
 INSERT INTO historial (data, motiu_visita, descripcio, mascota_id) VALUES
 ('2024-01-10', 'Vacunació', 'Vacuna anual contra la ràbia.', 1),
 ('2024-02-15', 'Revisió', 'Control de pes i dieta.', 1),
