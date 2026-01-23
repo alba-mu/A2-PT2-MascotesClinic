@@ -26,9 +26,16 @@ class OwnerFormValidation {
                         array_push($_SESSION['error'], OwnerMessage::ERR_FORM['invalid_id']);
                     }
                     break;
+                case 'id_hidden':
+                    // Obtener ID del campo oculto cuando se guarda
+                    $id=trim(filter_input(INPUT_POST, 'id_hidden'));
+                    if ($id === '') {
+                        array_push($_SESSION['error'], 'ID del propietario no disponible');
+                    }
+                    break;
                 case 'email':
                     $email=trim(filter_input(INPUT_POST, 'email'));
-                    $emailValid=!preg_match(self::EMAIL, $email);
+                    $emailValid=preg_match(self::EMAIL, $email);
                     if (empty($email)) {
                         array_push($_SESSION['error'], OwnerMessage::ERR_FORM['empty_email']);
                     }
@@ -38,7 +45,7 @@ class OwnerFormValidation {
                     break;
                 case 'movil':
                     $movil=trim(filter_input(INPUT_POST, 'movil'));
-                    $movilValid=!preg_match(self::MOBILE, $movil);
+                    $movilValid=preg_match(self::MOBILE, $movil);
                     if (empty($movil)) {    
                         array_push($_SESSION['error'], OwnerMessage::ERR_FORM['empty_movil']);
                     }

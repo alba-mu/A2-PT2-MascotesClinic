@@ -96,7 +96,26 @@ class OwnerController {
 
     // executa l'acció de modificar propietari    
     public function modify() {
-        // TODO   
+        // Validar email y móvil, pero también obtener el ID del campo oculto
+        $ownerInput=OwnerFormValidation::checkData(array_merge(OwnerFormValidation::MODIFY_FIELDS, array('id_hidden')));
+
+        if (!empty($_SESSION['error'])) {
+            $this->view->display("view/form/OwnerFormModify.php", $ownerInput);
+            return;
+        }
+
+        $modified=$this->model->modify($ownerInput);
+
+        if ($modified) {
+            $_SESSION['info'][]=OwnerMessage::INF_FORM['update'];
+        } else {
+            $_SESSION['error'][]=OwnerMessage::ERR_DAO['update'];
+        }
+
+        // Recuperar todo el objeto para mostrar los datos actualizados
+        $owner=$this->model->getOwnerById($ownerInput->getId(), false);
+
+        $this->view->display("view/form/OwnerFormModify.php", $owner);  
     }
 
     
