@@ -70,7 +70,8 @@
                                       </div>';
                             } else {
                                 echo '<div class="text-center py-5 text-muted">
-                                        <i class="bi bi-arrow-left-circle icon-light-blue"></i>
+                                        <i class="bi bi-arrow-up-circle icon-light-blue d-md-none"></i>
+                                        <i class="bi bi-arrow-left-circle icon-light-blue d-none d-md-inline"></i>
                                         <p class="mt-3">Introdueix un ID per veure les mascotes</p>
                                       </div>';
                             }
