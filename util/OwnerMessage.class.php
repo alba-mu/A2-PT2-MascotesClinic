@@ -4,33 +4,33 @@ class OwnerMessage {
 
     const INF_FORM =
         array(
-            'insert' => 'Data inserted successfully',
-            'update' => 'Data updated successfully',
-            'delete' => 'Data deleted successfully',
-            'found'  => 'Data found',
+            'insert' => 'Dades inserides correctament',
+            'update' => 'Dades actualitzades correctament',
+            'delete' => 'Dades eliminades correctament',
+            'found'  => 'Dades trobades',
             '' => ''
         );
     
     const ERR_FORM =
         array(
-            'empty_id'      => 'Id must be filled',
-            'empty_nom'    => 'Name must be filled',
-            'empty_movil'    => 'Mobile must be filled',
-            'empty_email'    => 'Email must be filled',
-            'invalid_id'    => 'Id must be valid values',
-            'invalid_nom'  => 'Name must be valid values',
-            'invalid_movil'  => 'Mobile must be valid values',
-            'invalid_email'  => 'Email must be valid values',
-            'not_exists_id' => 'Id not exists',
-            'not_found'     => 'No data found',
+            'empty_id'      => 'L\'Id és obligatori',
+            'empty_nom'    => 'El nom és obligatori',
+            'empty_movil'    => 'El mòbil és obligatori',
+            'empty_email'    => 'L\'email és obligatori',
+            'invalid_id'    => 'L\'Id ha de ser un valor vàlid',
+            'invalid_nom'  => 'El nom ha de ser un valor vàlid',
+            'invalid_movil'  => 'El mòbil ha de ser un valor vàlid',
+            'invalid_email'  => 'L\'email ha de ser un valor vàlid',
+            'not_exists_id' => 'L\'Id no existeix',
+            'not_found'     => 'No s\'han trobat dades',
             '' => ''
         );
 
     const ERR_DAO =
         array(
-            'insert' => 'Error inserting data',
-            'update' => 'Error updating data',
-            'delete' => 'Error deleting data',
+            'insert' => 'Error en inserir les dades',
+            'update' => 'Error en actualitzar les dades',
+            'delete' => 'Error en eliminar les dades',
             '' => ''
         );
     

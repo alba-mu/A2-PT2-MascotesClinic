@@ -21,7 +21,7 @@ class OwnerDbDAO {
 
     public function modify($owner): bool {
         if ($this->connect == NULL) {
-            $_SESSION['error'] = "Unable to connect to database";
+            $_SESSION['error'] = "No s'ha pogut connectar amb la base de dades";
             return FALSE;
         };
 
@@ -53,7 +53,7 @@ class OwnerDbDAO {
         $result = array();
 
         if ($this->connect == NULL) {
-            $_SESSION['error'] = "Unable to connect to database";
+            $_SESSION['error'] = "No s'ha pogut connectar amb la base de dades";
             return $result;
         };
 
@@ -80,7 +80,7 @@ class OwnerDbDAO {
 
     public function findById($id, bool $withPets=false) {
         if ($this->connect == NULL) {
-            $_SESSION['error'] = "Unable to connect to database";
+            $_SESSION['error'] = "No s'ha pogut connectar amb la base de dades";
             return NULL;
         }
 

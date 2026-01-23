@@ -1,0 +1,292 @@
+/* ============================================
+   MASCOTES CLINIC - CUSTOM STYLES
+   Color Palette:
+   - Primary (Green): #469387
+   - Secondary (Orange): #e69739
+   - Accent (Yellow): #efc65d
+   - Light (Blue): #aad3dc
+   ============================================ */
+
+/* ===== BACKGROUND & BODY ===== */
+body.clinic-body {
+    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+    min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.clinic-header {
+    background: linear-gradient(135deg, #aad3dc 0%, #ffffff 100%);
+    border-bottom: 4px solid #469387;
+}
+
+.clinic-header .logo-img {
+    height: 75px;
+    border: 3px solid #469387;
+}
+
+.clinic-header .header-title {
+    color: #469387;
+}
+
+/* ===== NAVBAR ===== */
+.clinic-navbar {
+    background: linear-gradient(135deg, #469387 0%, #469387 100%);
+    border-bottom: 3px solid #e69739;
+}
+
+.clinic-navbar .navbar-toggler {
+    border-color: rgba(255,255,255,0.5);
+}
+
+.clinic-navbar .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+.clinic-navbar .nav-link:hover {
+    color: #efc65d !important;
+}
+
+.clinic-dropdown {
+    background-color: #ffffff;
+}
+
+.clinic-dropdown .dropdown-item {
+    color: #469387;
+    font-weight: 500;
+}
+
+.clinic-dropdown .dropdown-item:hover {
+    background-color: #aad3dc !important;
+    color: #469387 !important;
+}
+
+.clinic-dropdown .dropdown-divider {
+    border-color: #aad3dc;
+}
+
+/* ===== PANELS & FIELDSETS ===== */
+.panel-search {
+    background: linear-gradient(135deg, #469387 0%, #469387 100%);
+    border-left: 5px solid #e69739 !important;
+}
+
+.panel-primary {
+    background-color: #ffffff;
+    border-top: 4px solid #469387 !important;
+}
+
+.panel-light {
+    background-color: #ffffff;
+    border-top: 4px solid #aad3dc !important;
+}
+
+/* ===== LEGENDS ===== */
+.legend-orange {
+    background-color: #e69739;
+    font-size: 1.1rem;
+}
+
+.legend-primary {
+    background-color: #469387;
+    font-size: 1.1rem;
+}
+
+.legend-large {
+    background-color: #469387;
+    font-size: 1.2rem;
+}
+
+/* ===== FORM INPUTS ===== */
+.input-search {
+    background-color: rgba(255,255,255,0.95);
+}
+
+.input-editable {
+    border-color: #e69739 !important;
+    background-color: #fffef7;
+}
+
+.input-readonly {
+    border-color: #aad3dc !important;
+}
+
+.label-white {
+    color: white;
+}
+
+.label-primary {
+    color: #469387;
+}
+
+/* ===== BUTTONS ===== */
+.btn-clinic-search {
+    background-color: #efc65d;
+    border: none;
+    color: white;
+}
+
+.btn-clinic-search:hover {
+    background-color: #e6b84d;
+    color: white;
+}
+
+.btn-clinic-primary {
+    background-color: #469387;
+    border: none;
+    color: white;
+}
+
+.btn-clinic-primary:hover {
+    background-color: #3a7d72;
+    color: white;
+}
+
+.btn-clinic-primary:disabled {
+    background-color: #7db5ab;
+    opacity: 0.6;
+}
+
+/* ===== TABLES ===== */
+.table-clinic {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.table-clinic thead {
+    background-color: #469387;
+    color: white;
+}
+
+.table-clinic tbody {
+    background-color: #f8f9fa;
+}
+
+.table-clinic tbody tr {
+    border-bottom: 1px solid #aad3dc;
+    transition: background-color 0.2s ease;
+}
+
+.table-clinic tbody tr:hover {
+    background-color: #e8f4f8;
+}
+
+.table-clinic th,
+.table-clinic td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border: none;
+}
+
+.table-clinic .cell-id {
+    color: #469387;
+}
+
+/* ===== ALERTS & MESSAGES ===== */
+.alert-clinic-success {
+    background-color: #aad3dc;
+    color: #469387;
+}
+
+.alert-clinic-error {
+    background-color: #e69739;
+    color: #ffffff;
+}
+
+.alert-clinic-info {
+    background-color: #aad3dc;
+    color: #469387;
+}
+
+/* ===== BADGES ===== */
+.badge-clinic-email {
+    background-color: #efc65d;
+    color: #333;
+}
+
+/* ===== EMPTY STATES ===== */
+.empty-state-icon,
+.icon-light-blue {
+    font-size: 3rem;
+    color: #aad3dc;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+html, body {
+    height: 100%;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#page > * {
+    flex-shrink: 0;
+}
+
+#content {
+    flex: 1;
+}
+
+.clinic-footer {
+    background: linear-gradient(135deg, #469387 0%, #357367 100%);
+    color: white;
+    margin-top: auto;
+    padding: 1.5rem 0;
+    border-top: 4px solid #e69739;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+}
+
+.empty-state-text {
+    color: #6c757d;
+}
+
+/* ===== LABELS ===== */
+.label-white {
+    color: white;
+}
+
+.label-primary {
+    color: #469387;
+}
+
+/* ===== UTILITIES ===== */
+.text-warning-light {
+    color: #efc65d;
+}
+
+.text-white-50-custom {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.bg-clinic-primary {
+    background-color: #469387 !important;
+}
+
+.bg-clinic-secondary {
+    background-color: #e69739 !important;
+}
+
+.bg-clinic-accent {
+    background-color: #efc65d !important;
+}
+
+.bg-clinic-light {
+    background-color: #aad3dc !important;
+}
+
+.border-clinic-primary {
+    border-color: #469387 !important;
+}
+
+.border-clinic-light {
+    border-color: #aad3dc !important;
+}

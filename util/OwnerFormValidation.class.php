@@ -30,7 +30,7 @@ class OwnerFormValidation {
                     // Obtener ID del campo oculto cuando se guarda
                     $id=trim(filter_input(INPUT_POST, 'id_hidden'));
                     if ($id === '') {
-                        array_push($_SESSION['error'], 'ID del propietario no disponible');
+                        array_push($_SESSION['error'], 'ID del propietari no disponible');
                     }
                     break;
                 case 'email':

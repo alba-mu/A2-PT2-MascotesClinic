@@ -62,10 +62,7 @@ class OwnerController {
     public function listAll() {
         $owners=$this->model->listAll();
         
-        if (!empty($owners)) {
-            $_SESSION['info']=OwnerMessage::INF_FORM['found'];
-        }
-        else {
+        if (empty($owners)) {
             $_SESSION['error']=OwnerMessage::ERR_FORM['not_found'];
         }
         
@@ -81,10 +78,6 @@ class OwnerController {
     // executa l'acció de buscar mascotes por id de propietari
     public function listPets() {
         $owner=$this->fetchOwnerFromRequest(true);
-
-        if ($owner) {
-            $_SESSION['info']=OwnerMessage::INF_FORM['found'];
-        }
 
         $this->view->display("view/form/OwnerFormSearchPets.php", $owner);
     }
@@ -124,10 +117,6 @@ class OwnerController {
     // executa l'acció de buscar propietari per id de propietari
     public function searchById() {
         $owner=$this->fetchOwnerFromRequest(false);
-
-        if ($owner) {
-            $_SESSION['info']=OwnerMessage::INF_FORM['found'];
-        }
             
         $this->view->display("view/form/OwnerFormModify.php", $owner);
     }

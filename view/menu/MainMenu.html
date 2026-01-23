@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg shadow-sm clinic-navbar">
   <div class="container-fluid">
-    <a class="navbar-brand text-white px-3" href="index.php">Home</a>
+    <a class="navbar-brand text-white px-3 fw-bold" href="index.php">
+      <i class="bi bi-house-door-fill me-2"></i>Mascotes Clinic
+    </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
       aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,36 +15,52 @@
 
         <!-- Propietaris -->
         <li class="nav-item dropdown px-3">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
-            Propietaris
+          <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-people-fill me-1"></i>Propietaris
           </a>
-          <ul class="dropdown-menu dropdown-menu-dark">
+          <ul class="dropdown-menu border-0 shadow clinic-dropdown">
             <li>
-              <a class="dropdown-item" href="index.php?menu=owner&option=list_all">Llistar tots</a>
+              <a class="dropdown-item" href="index.php?menu=owner&option=list_all">
+                <i class="bi bi-list-ul me-2"></i>Llistar tots
+              </a>
             </li>
+            <li><hr class="dropdown-divider"></li>
             <li>
-              <a class="dropdown-item" href="index.php?menu=owner&option=form_search">Buscar mascotes</a>
+              <a class="dropdown-item" href="index.php?menu=owner&option=form_search">
+                <i class="bi bi-search me-2"></i>Buscar mascotes
+              </a>
             </li>
+            <li><hr class="dropdown-divider"></li>
             <li>
-              <a class="dropdown-item" href="index.php?menu=owner&option=form_modify">Modificar</a>
+              <a class="dropdown-item" href="index.php?menu=owner&option=form_modify">
+                <i class="bi bi-pencil-square me-2"></i>Modificar
+              </a>
             </li>
           </ul>
         </li>
 
         <!-- Mascotes -->
         <li class="nav-item dropdown px-3">
-          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
-            Mascotes
+          <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" role="button" data-bs-toggle="dropdown">
+            <i class="bi bi-heart-fill me-1"></i>Mascotes
           </a>
-          <ul class="dropdown-menu dropdown-menu-dark">
+          <ul class="dropdown-menu border-0 shadow clinic-dropdown">
             <li>
-              <a class="dropdown-item" href="index.php?menu=pet&option=list_all">Llistar totes</a>
+              <a class="dropdown-item" href="index.php?menu=pet&option=list_all">
+                <i class="bi bi-list-ul me-2"></i>Llistar totes
+              </a>
             </li>
+            <li><hr class="dropdown-divider"></li>
             <li>
-              <a class="dropdown-item" href="index.php?menu=pet&option=form_search">Buscar</a>
+              <a class="dropdown-item" href="index.php?menu=pet&option=form_search">
+                <i class="bi bi-search me-2"></i>Buscar
+              </a>
             </li>
+            <li><hr class="dropdown-divider"></li>
             <li>
-              <a class="dropdown-item" href="index.php?menu=pet&option=form_history">Afegir una línia d'historial</a>
+              <a class="dropdown-item" href="index.php?menu=pet&option=form_history">
+                <i class="bi bi-journal-plus me-2"></i>Afegir historial
+              </a>
             </li>
           </ul>
         </li>
