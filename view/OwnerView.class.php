@@ -22,12 +22,15 @@ class OwnerView {
      */
     public function display($template=NULL, $content=NULL) {
         include("view/menu/MainMenu.html");
-
+        echo '<div id="content">';
+        
+        include("view/form/MessageForm.php");
+        
         if (!empty($template)) {
             include($template);
         }
         
-        include("view/form/MessageForm.php");
+        echo '</div>';
     }    
 
 }
