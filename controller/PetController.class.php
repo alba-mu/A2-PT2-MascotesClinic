@@ -182,7 +182,7 @@ class PetController {
             $id=trim(filter_input(INPUT_GET, 'id'));
         }
 
-        if ($id === '' || is_null($id) || preg_match(PetFormValidation::NUMERIC, $id)) {
+        if ($id === '' || is_null($id) || !preg_match(PetFormValidation::NUMERIC, $id)) {
             $_SESSION['error'][]=PetMessage::ERR_FORM['invalid_id'];
             return NULL;
         }
