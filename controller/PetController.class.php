@@ -2,7 +2,7 @@
 /**
  * File: PetController.class.php
  * Description: Controller for pet-related operations. Handles request routing and coordinates between
- * model (PetModel) and view (PetView). Manages form validation, database operations, and view rendering.
+ * model (PetModel) and view (PetView). Manages pet CRUD operations, validation, and view rendering.
  */
 
 require_once "view/PetView.class.php";
@@ -36,52 +36,53 @@ class PetController {
      * @return void
      */
     public function processRequest() {
-        
         $request=NULL;
         $_SESSION['info']=array();
         $_SESSION['error']=array();
         
         // Get action from POST request
         if (filter_has_var(INPUT_POST, 'action')) {
-            $request=filter_has_var(INPUT_POST, 'action')?filter_input(INPUT_POST, 'action'):NULL;
+            $request=filter_input(INPUT_POST, 'action');
         }
         // Get menu option from GET request
-        else {
-            $request=filter_has_var(INPUT_GET, 'option')?filter_input(INPUT_GET, 'option'):NULL;
+        else if (filter_has_var(INPUT_GET, 'option')) {
+            $request=filter_input(INPUT_GET, 'option');
         }
         
         switch ($request) {
             case "list_all":
                 $this->listAll();
                 break;
+            case "form_search":
+                $this->showSearchForm();
+                break;
+            case "detail":
+                $this->showDetail();
+                break;
             case "form_modify":
-                $this->formModify();
+                $this->showModifyForm();
                 break;
             case "modify":
                 $this->modify();
                 break;
-            case "form_search":
-                $this->formSearch();
-                break;
-            case "search":
-                $this->searchById();
-                break;
-            case "detail":
-                $this->showDetail();
+            case "form_history":
+                $this->showHistoryForm();
                 break;
             case "add_history":
                 $this->addHistory();
                 break;
             default:
-                $this->view->display();
+                $this->showHome();
         }
     }
 
     /**
+     * ========== LISTADO ==========
+     */
+
+    /**
      * Displays list of all pets from the database
      * Sets error message if no pets found
-     * 
-     * @return void
      */
     public function listAll() {
         $pets=$this->model->listAll();
@@ -93,9 +94,32 @@ class PetController {
     }
 
     /**
-     * Loads modify form, optionally with pet data if id (GET) is provided
+     * ========== BÚSQUEDA Y DETALLE ==========
      */
-    public function formModify() {
+
+    /**
+     * Displays the search form for finding pets by ID
+     */
+    public function showSearchForm() {
+        $this->view->display("view/form/PetDetail.php");
+    }
+
+    /**
+     * Shows pet detail with owner and history
+     */
+    public function showDetail() {
+        $pet=$this->fetchPetFromRequest(true);
+        $this->view->display("view/form/PetDetail.php", $pet);
+    }
+
+    /**
+     * ========== MODIFICACIÓN ==========
+     */
+
+    /**
+     * Loads modify form, optionally with pet data if id is provided
+     */
+    public function showModifyForm() {
         $pet=NULL;
         if (filter_has_var(INPUT_GET, 'id')) {
             $id=filter_input(INPUT_GET, 'id');
@@ -140,20 +164,14 @@ class PetController {
     }
 
     /**
-     * Displays the search form for finding pets by ID
-     * 
-     * @return void
-     */    
-    public function formSearch() {
-        $this->view->display("view/form/PetDetail.php");
-    }
+     * ========== HISTORIAL ==========
+     */
 
     /**
-     * Shows pet detail with owner and history
+     * Displays form to add history entry for a pet
      */
-    public function showDetail() {
-        $pet=$this->fetchPetFromRequest(true);
-        $this->view->display("view/form/PetDetail.php", $pet);
+    public function showHistoryForm() {
+        $this->view->display("view/form/PetHistory.php");
     }
 
     /**
@@ -163,7 +181,7 @@ class PetController {
         $history=PetFormValidation::validateHistory();
 
         if (!empty($_SESSION['error'])) {
-            $pet=$this->model->getPetHistory($history->getMascotaId());
+            $pet=$this->model->getPetDetail($history->getMascotaId());
             $this->view->display("view/form/PetHistory.php", $pet);
             return;
         }
@@ -180,17 +198,11 @@ class PetController {
     }
 
     /**
-     * Searches pet by id and loads modify form
+     * ========== MÉTODOS PRIVADOS ==========
      */
-    public function searchById() {
-        $pet=$this->fetchPetFromRequest(false);
-        $pets=$this->model->listAll();
-        $data=array('pets'=>$pets, 'pet'=>$pet);
-        $this->view->display("view/form/PetList.php", $data);
-    }
 
     /**
-     * Fetches pet from request parameters
+     * Fetches pet from request parameters (POST or GET)
      * 
      * @param bool $withRelations Whether to include owner and history data
      * @return Pet|null Pet object if found, NULL otherwise
@@ -215,7 +227,13 @@ class PetController {
         return $pet;
     }
 
-    // shows home page
+    /**
+     * ========== HOME ==========
+     */
+
+    /**
+     * Displays home page
+     */
     public function showHome() {
         $this->view->display("view/HomePage.php");
     }
