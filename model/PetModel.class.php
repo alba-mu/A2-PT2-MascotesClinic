@@ -73,11 +73,6 @@ class PetModel {
         return $this->dataPet->findById($id, true);
     }
 
-    /**
-     * Adds history entry for a pet
-     */
-    public function addHistory(PetHistory $history): bool {
-        return $this->dataPet->addHistory($history);
-    }
+
 
 }

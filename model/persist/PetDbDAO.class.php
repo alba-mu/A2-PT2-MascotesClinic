@@ -10,6 +10,7 @@ require_once "model/persist/ConnectDb.class.php";
 require_once "model/Pet.class.php";
 require_once "model/Owner.class.php";
 require_once "model/PetHistory.class.php";
+require_once "model/persist/HistoryDbDAO.class.php";
 
 /**
  * PetDbDAO - Data Access Object
@@ -126,32 +127,7 @@ class PetDbDAO {
         return $pet;
     }
 
-    /**
-     * Inserts a new history entry for a pet
-     * @param PetHistory $history
-     * @return bool
-     */
-    public function addHistory(PetHistory $history): bool {
-        if ($this->connect == NULL) {
-            $_SESSION['error'] = "No s'ha pogut connectar amb la base de dades";
-            return FALSE;
-        }
-        try {
-            $sql = <<<SQL
-                INSERT INTO historial (data, motiu_visita, descripcio, mascota_id)
-                VALUES (:data, :motiu, :descripcio, :pet_id);
-            SQL;
 
-            $stmt = $this->connect->prepare($sql);
-            $stmt->bindValue(":data", $history->getData(), PDO::PARAM_STR);
-            $stmt->bindValue(":motiu", $history->getMotiuVisita(), PDO::PARAM_STR);
-            $stmt->bindValue(":descripcio", $history->getDescripcio(), PDO::PARAM_STR);
-            $stmt->bindValue(":pet_id", $history->getMascotaId(), PDO::PARAM_INT);
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            return FALSE;
-        }
-    }
 
     /**
      * Private method to fetch a single pet
@@ -201,26 +177,11 @@ class PetDbDAO {
 
     /**
      * Private method to fetch history entries for a pet
+     * Delegates to HistoryDbDAO
      */
     private function fetchHistory($petId): array {
-        $history = array();
-        try {
-            $sql = <<<SQL
-                SELECT id, data, motiu_visita, descripcio, mascota_id
-                FROM historial
-                WHERE mascota_id=:petId
-                ORDER BY data DESC, id DESC;
-            SQL;
-
-            $stmt = $this->connect->prepare($sql);
-            $stmt->bindParam(":petId", $petId, PDO::PARAM_INT);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'PetHistory');
-            $history = $stmt->fetchAll();
-        } catch (PDOException $e) {
-            return $history;
-        }
-        return $history;
+        $historyDAO = HistoryDbDAO::getInstance();
+        return $historyDAO->findByPetId($petId);
     }
 
 }

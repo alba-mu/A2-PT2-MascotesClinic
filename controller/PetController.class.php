@@ -7,6 +7,7 @@
 
 require_once "view/PetView.class.php";
 require_once "model/PetModel.class.php";
+require_once "model/HistoryModel.class.php";
 require_once "model/Pet.class.php";
 require_once "util/PetMessage.class.php";
 require_once "util/PetFormValidation.class.php";
@@ -19,10 +20,12 @@ require_once "util/PetFormValidation.class.php";
 class PetController {
     private $view;
     private $model;
+    private $historyModel;
 
     public function __construct() {
         $this->view=new PetView();
         $this->model=new PetModel();
+        $this->historyModel=new HistoryModel();
     }
 
     /**
@@ -153,7 +156,7 @@ class PetController {
             return;
         }
 
-        $inserted=$this->model->addHistory($history);
+        $inserted=$this->historyModel->insert($history);
         if ($inserted) {
             $_SESSION['info'][]=PetMessage::INF_FORM['insert'];
         } else {
