@@ -34,14 +34,6 @@ body.clinic-body {
     border-bottom: 3px solid #e69739;
 }
 
-.clinic-navbar .navbar-toggler {
-    border-color: rgba(255,255,255,0.5);
-}
-
-.clinic-navbar .navbar-toggler-icon {
-    filter: brightness(0) invert(1);
-}
-
 .clinic-navbar .nav-link:hover {
     color: #efc65d !important;
 }
@@ -88,6 +80,11 @@ body.clinic-body {
 
 .legend-primary {
     background-color: #469387;
+    font-size: 1.1rem;
+}
+
+.legend-accent {
+    background-color: #efc65d;
     font-size: 1.1rem;
 }
 

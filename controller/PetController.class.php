@@ -60,6 +60,9 @@ class PetController {
             case "modify":
                 $this->modify();
                 break;
+            case "form_search":
+                $this->formSearch();
+                break;
             case "search":
                 $this->searchById();
                 break;
@@ -137,6 +140,15 @@ class PetController {
     }
 
     /**
+     * Displays the search form for finding pets by ID
+     * 
+     * @return void
+     */    
+    public function formSearch() {
+        $this->view->display("view/form/PetDetail.php");
+    }
+
+    /**
      * Shows pet detail with owner and history
      */
     public function showDetail() {
@@ -177,6 +189,12 @@ class PetController {
         $this->view->display("view/form/PetList.php", $data);
     }
 
+    /**
+     * Fetches pet from request parameters
+     * 
+     * @param bool $withRelations Whether to include owner and history data
+     * @return Pet|null Pet object if found, NULL otherwise
+     */
     private function fetchPetFromRequest(bool $withRelations=false) {
         $id=NULL;
         if (filter_has_var(INPUT_POST, 'id')) {
@@ -185,7 +203,7 @@ class PetController {
             $id=trim(filter_input(INPUT_GET, 'id'));
         }
 
-        if ($id === '' || is_null($id) || !preg_match(PetFormValidation::NUMERIC, $id)) {
+        if ($id === '' || is_null($id) || preg_match(PetFormValidation::NUMERIC, $id)) {
             $_SESSION['error'][]=PetMessage::ERR_FORM['invalid_id'];
             return NULL;
         }
