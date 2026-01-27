@@ -43,14 +43,12 @@ CREATE TABLE IF NOT EXISTS historial (
 ALTER TABLE mascotes
   ADD CONSTRAINT fk_mascotes_propietaris
     FOREIGN KEY (propietari_id)
-    REFERENCES propietaris(id)
-    ON DELETE CASCADE;
+    REFERENCES propietaris(id);
 
 ALTER TABLE historial
   ADD CONSTRAINT fk_historial_mascotes
     FOREIGN KEY (mascota_id)
-    REFERENCES mascotes(id)
-    ON DELETE CASCADE;
+    REFERENCES mascotes(id);
 
 -- Insert test data for Owners
 INSERT INTO propietaris (nom, email, movil) VALUES
