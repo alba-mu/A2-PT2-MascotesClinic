@@ -98,7 +98,7 @@ EOT;
                             </label>
                             <input
                                 type="text"
-                                class="form-control form-control-lg border-2 shadow-sm <?php echo $hasPet ? 'input-editable' : 'input-readonly'; ?>"
+                                class="form-control border-2 shadow-sm <?php echo $hasPet ? 'input-editable' : 'input-readonly'; ?>"
                                 id="petNameField"
                                 placeholder="Nom de la mascota"
                                 name="nom"
@@ -113,7 +113,7 @@ EOT;
                             </label>
                             <input
                                 type="text"
-                                class="form-control form-control-lg border-2 shadow-sm <?php echo $hasPet ? 'input-editable' : 'input-readonly'; ?>"
+                                class="form-control border-2 shadow-sm <?php echo $hasPet ? 'input-editable' : 'input-readonly'; ?>"
                                 id="ownerField"
                                 placeholder="Ex: 1"
                                 name="owner_id"
