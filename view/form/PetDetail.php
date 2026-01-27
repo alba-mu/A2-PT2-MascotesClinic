@@ -4,8 +4,8 @@
         <form method="post" action="">
             <div class="row">
                 <div class="col-12">
-                    <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-search">
-                        <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-orange">
+                    <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-search mb-3">
+                        <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-orange mb-0">
                             <i class="bi bi-search me-2"></i>Cercar mascota
                         </legend>
 
@@ -40,19 +40,19 @@
             <!-- Información de mascota y propietario (lado a lado) -->
             <div class="row g-4 mb-4">
                 <!-- Información básica de la mascota -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-md-4">
                     <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-light h-100">
                         <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-primary">
                             <i class="bi bi-heart-fill me-2"></i>Informació de la mascota
                         </legend>
                         <div class="row g-3">
-                            <div class="col-12">
+                            <div class="col-xl-3 col-md-5 col-sm-6 col-4">
                                 <div class="p-3 bg-light rounded">
                                     <p class="mb-1 text-muted small"><i class="bi bi-hash me-1"></i>ID</p>
                                     <p class="mb-0 fw-bold fs-5" style="color: #469387;"><?php echo $content->getId(); ?></p>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-xl-9 col-md-7 col-sm-6 col-8">
                                 <div class="p-3 bg-light rounded">
                                     <p class="mb-1 text-muted small"><i class="bi bi-tag-fill me-1"></i>Nom</p>
                                     <p class="mb-0 fw-bold fs-5"><?php echo $content->getNom(); ?></p>
@@ -63,7 +63,7 @@
                 </div>
 
                 <!-- Información del propietario -->
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-md-8">
                     <?php if ($content->getOwner() != NULL): 
                         $owner = $content->getOwner();
                     ?>
@@ -72,25 +72,25 @@
                             <i class="bi bi-person-fill me-2"></i>Informació del propietari
                         </legend>
                         <div class="row g-3">
-                            <div class="col-md-4">
+                            <div class="col-lg-2 col-4">
                                 <div class="p-3 bg-light rounded">
                                     <p class="mb-1 text-muted small"><i class="bi bi-hash me-1"></i>ID</p>
                                     <p class="mb-0 fw-semibold"><?php echo $owner->getId(); ?></p>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-lg-3 col-8">
                                 <div class="p-3 bg-light rounded">
                                     <p class="mb-1 text-muted small"><i class="bi bi-person me-1"></i>Nom</p>
                                     <p class="mb-0 fw-semibold"><?php echo $owner->getNom(); ?></p>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-lg-4 col-8">
                                 <div class="p-3 bg-light rounded">
                                     <p class="mb-1 text-muted small"><i class="bi bi-envelope me-1"></i>Email</p>
                                     <p class="mb-0 fw-semibold"><?php echo $owner->getEmail(); ?></p>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-4">
                                 <div class="p-3 bg-light rounded">
                                     <p class="mb-1 text-muted small"><i class="bi bi-phone me-1"></i>Mòbil</p>
                                     <p class="mb-0 fw-semibold"><?php echo $owner->getMovil(); ?></p>
