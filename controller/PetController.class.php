@@ -148,8 +148,8 @@ class PetController {
         $history=PetFormValidation::validateHistory();
 
         if (!empty($_SESSION['error'])) {
-            $pet=$this->model->getPetDetail($history->getMascotaId());
-            $this->view->display("view/form/PetDetail.php", $pet);
+            $pet=$this->model->getPetHistory($history->getMascotaId());
+            $this->view->display("view/form/PetHistory.php", $pet);
             return;
         }
 
@@ -161,7 +161,7 @@ class PetController {
         }
 
         $pet=$this->model->getPetDetail($history->getMascotaId());
-        $this->view->display("view/form/PetDetail.php", $pet);
+        $this->view->display("view/form/PetHistory.php", $pet);
     }
 
     /**
