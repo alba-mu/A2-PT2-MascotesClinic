@@ -1,8 +1,14 @@
+<?php
+/**
+ * File: OwnerFormModify.php
+ * Description: Form for searching and modifying owner information.
+ * Provides search by ID and editable fields for owner data (name, email, mobile).
+ */
+?>
 <div id="content" class="container-fluid mt-4">
     <div class="container">
         <form method="post" action="">
             <div class="row g-4">
-                <!-- Sección de búsqueda por ID (izquierda) -->
                 <div class="col-12 col-md-5 col-lg-4">
                     <fieldset class="border-0 rounded-3 p-4 h-100 shadow-sm panel-search">
                         <legend class="float-none w-auto px-3 py-2 mb-3 rounded-2 text-white fw-bold legend-orange">
@@ -31,14 +37,12 @@
                     </fieldset>
                 </div>
 
-                <!-- Sección de modificación de datos (derecha) -->
                 <div class="col-12 col-md-7 col-lg-8">
                     <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-light">
                         <legend class="float-none w-auto px-3 py-2 mb-4 rounded-2 text-white fw-bold legend-primary">
                             <i class="bi bi-pencil-square me-2"></i>Dades del propietari
                         </legend>
 
-                        <!-- Campo ID oculto para enviar en el formulario de guardar -->
                         <input type="hidden" name="id_hidden" value="<?php if (isset($content) && $content != NULL) { echo $content->getId(); } ?>" />
 
                         <div class="row">

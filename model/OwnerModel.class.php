@@ -20,7 +20,6 @@ class OwnerModel {
         $this->dataOwner=OwnerDbDAO::getInstance();
     }
 
-
     /**
      * update an owner
      * @param $owner Owner object to update
@@ -35,7 +34,6 @@ class OwnerModel {
 
         return $modified;
     }
-
 
     /**
      * list all owners

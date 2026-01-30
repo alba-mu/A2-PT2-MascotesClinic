@@ -77,7 +77,7 @@ class PetController {
     }
 
     /**
-     * ========== LISTADO ==========
+     * ========== LIST ==========
      */
 
     /**
@@ -89,12 +89,14 @@ class PetController {
         if (empty($pets)) {
             $_SESSION['error'][]=PetMessage::ERR_FORM['not_found'];
         }
+
         $data=array('pets'=>$pets, 'pet'=>NULL);
         $this->view->display("view/form/PetList.php", $data);
     }
 
+
     /**
-     * ========== BÚSQUEDA Y DETALLE ==========
+     * ========== SEARCH AND DETAIL ==========
      */
 
     /**
@@ -112,8 +114,9 @@ class PetController {
         $this->view->display("view/form/PetDetail.php", $pet);
     }
 
+
     /**
-     * ========== MODIFICACIÓN ==========
+     * ========== MODIFY ==========
      */
 
     /**
@@ -163,8 +166,9 @@ class PetController {
         $this->view->display("view/form/PetList.php", $data);
     }
 
+
     /**
-     * ========== HISTORIAL ==========
+     * ========== HISTORY ==========
      */
 
     /**
@@ -181,8 +185,23 @@ class PetController {
         $history=PetFormValidation::validateHistory();
 
         if (!empty($_SESSION['error'])) {
-            $pet=$this->model->getPetDetail($history->getMascotaId());
-            $this->view->display("view/form/PetHistory.php", $pet);
+            $this->view->display("view/form/PetHistory.php", $history);
+            return;
+        }
+
+        // Validate that the pet exists before inserting history
+        $petExists=$this->model->getPetById($history->getMascotaId(), false);
+        if (is_null($petExists)) {
+            $_SESSION['error'][]=PetMessage::ERR_FORM['pet_not_found'];
+            $this->view->display("view/form/PetHistory.php", $history);
+            return;
+        }
+
+        // Validate date is not in the future
+        $currentDate=date('Y-m-d');
+        if ($history->getData() > $currentDate) {
+            $_SESSION['error'][]=PetMessage::ERR_FORM['invalid_date_future'];
+            $this->view->display("view/form/PetHistory.php", $history);
             return;
         }
 
@@ -197,8 +216,9 @@ class PetController {
         $this->view->display("view/form/PetHistory.php", $pet);
     }
 
+
     /**
-     * ========== MÉTODOS PRIVADOS ==========
+     * ========== PRIVATE METHODS ==========
      */
 
     /**
@@ -226,6 +246,7 @@ class PetController {
         }
         return $pet;
     }
+
 
     /**
      * ========== HOME ==========

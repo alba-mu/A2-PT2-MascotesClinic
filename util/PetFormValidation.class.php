@@ -1,12 +1,19 @@
 <?php
 /**
  * File: PetFormValidation.class.php
- * Description: Validation utilities for pet forms and history entries.
+ * Description: Form validation utility class for pet and history entry forms.
+ * Validates pet data (ID, name, owner ID) and history entry data (date, reason, description).
+ * Uses regex patterns to ensure data integrity before database operations.
  */
 require_once "util/PetMessage.class.php";
 require_once "model/Pet.class.php";
 require_once "model/PetHistory.class.php";
 
+/**
+ * PetFormValidation - Validation Utilities
+ * Provides static methods for validating pet and history form inputs
+ * Stores validation errors in $_SESSION['error'] array
+ */
 class PetFormValidation {
 
     const MODIFY_FIELDS = array('id', 'nom', 'owner_id');
@@ -17,8 +24,10 @@ class PetFormValidation {
     const DATE = "/^\\d{4}-\\d{2}-\\d{2}$/";
 
     /**
-     * Validate pet modification data
-     * @return Pet Validated Pet object
+     * Validates pet modification form data
+     * Checks ID, name, and owner ID fields
+     * 
+     * @return Pet Validated Pet object with form data
      */
     public static function validatePet(): Pet {
         $id = trim(filter_input(INPUT_POST, 'id'));
@@ -43,8 +52,10 @@ class PetFormValidation {
     }
 
     /**
-     * Validate history entry data
-     * @return PetHistory Validated PetHistory object
+     * Validates history entry form data
+     * Checks pet ID, date, reason, and description fields
+     * 
+     * @return PetHistory Validated PetHistory object with form data
      */
     public static function validateHistory(): PetHistory {
         $petId = trim(filter_input(INPUT_POST, 'pet_id'));

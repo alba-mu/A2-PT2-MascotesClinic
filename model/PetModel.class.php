@@ -19,7 +19,6 @@ class PetModel {
         $this->dataPet=PetDbDAO::getInstance();
     }
 
-
     /**
      * update a pet
      * @param $pet Pet object to update
@@ -35,7 +34,6 @@ class PetModel {
         return $modified;
     }
 
-
     /**
      * list all pets
      * @param void
@@ -50,7 +48,7 @@ class PetModel {
     /**
     * select a pet by Id
     * @param $id string Pet Id
-    * @param $withPets bool include pets list
+    * @param $withRelations bool include related owner and history
     * @return Pet object or NULL
     */
     public function getPetById($id, bool $withRelations=false) {
@@ -72,7 +70,4 @@ class PetModel {
     public function getPetDetail($id) {
         return $this->dataPet->findById($id, true);
     }
-
-
-
 }

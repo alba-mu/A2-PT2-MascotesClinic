@@ -1,6 +1,12 @@
+<?php
+/**
+ * File: HomePage.php
+ * Description: Home page view displaying welcome message and system features overview.
+ * Shows cards for owner management, pet search, and medical history tracking.
+ */
+?>
 <div class="container-fluid mt-4">
     <div class="container">
-        <!-- Hero Section -->
         <div class="row mb-4">
             <div class="col-12">
                 <div class="text-center py-5 px-4 rounded-3 shadow-sm hero-section">
@@ -11,7 +17,6 @@
             </div>
         </div>
 
-        <!-- Features Cards -->
         <div class="row g-4 mb-4">
             <div class="col-md-4">
                 <div class="card h-100 border-0 shadow-sm card-border-primary">
@@ -44,7 +49,6 @@
             </div>
         </div>
 
-        <!-- Instructions -->
         <div class="row">
             <div class="col-12">
                 <div class="alert border-0 shadow-sm info-alert">

@@ -1,3 +1,10 @@
+<?php
+/**
+ * File: OwnerList.php
+ * Description: Displays a table listing all registered pet owners.
+ * Shows owner ID, name, email, and mobile phone information.
+ */
+?>
 <div id="content" class="container-fluid mt-4">
     <div class="container">
         <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-primary">

@@ -1,6 +1,12 @@
+<?php
+/**
+ * File: PetDetail.php
+ * Description: Form to search for a pet by ID and display detailed information.
+ * Shows pet data, owner information, and complete medical history.
+ */
+?>
 <div id="content" class="container-fluid mt-4">
     <div class="container mb-4">
-        <!-- Formulario de búsqueda (arriba, full width) -->
         <form method="post" action="">
             <div class="row">
                 <div class="col-12">
@@ -37,9 +43,7 @@
         </form>
 
         <?php if (isset($content) && $content != NULL): ?>
-            <!-- Información de mascota y propietario (lado a lado) -->
             <div class="row g-4 mb-4">
-                <!-- Información básica de la mascota -->
                 <div class="col-12 col-md-4">
                     <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-light h-100">
                         <legend class="float-none w-auto px-3 py-2 rounded-2 text-white fw-bold legend-primary">
@@ -62,7 +66,6 @@
                     </fieldset>
                 </div>
 
-                <!-- Información del propietario -->
                 <div class="col-12 col-md-8">
                     <?php if ($content->getOwner() != NULL): 
                         $owner = $content->getOwner();
@@ -111,7 +114,6 @@
                 </div>
             </div>
 
-            <!-- Historial médico (abajo, full width) -->
             <div class="row">
                 <div class="col-12">
                     <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-light">

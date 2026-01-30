@@ -2,6 +2,7 @@
 /**
  * File: PetHistory.class.php
  * Description: Entity class representing a medical history entry for a pet.
+ * Stores visit date, reason, description, and associated pet ID.
  */
 class PetHistory {
     private $id;
@@ -10,6 +11,15 @@ class PetHistory {
     private $descripcio;
     private $mascota_id;
 
+    /**
+     * Constructor for PetHistory class
+     * 
+     * @param int|null $id History entry identifier
+     * @param string|null $data Visit date (YYYY-MM-DD format)
+     * @param string|null $motiu_visita Reason for visit
+     * @param string|null $descripcio Detailed description of the visit
+     * @param int|null $mascota_id Pet identifier (foreign key)
+     */
     public function __construct($id=NULL, $data=NULL, $motiu_visita=NULL, $descripcio=NULL, $mascota_id=NULL) {
         $this->id=$id;
         $this->data=$data;

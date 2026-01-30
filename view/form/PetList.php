@@ -1,4 +1,9 @@
 <?php
+/**
+ * File: PetList.php
+ * Description: Displays a list of all pets and provides a form to edit pet information.
+ * Shows pet table and an edit panel for modifying selected pets.
+ */
     $pets=array();
     $petToEdit=NULL;
 

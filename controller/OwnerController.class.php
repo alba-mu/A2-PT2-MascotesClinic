@@ -128,7 +128,6 @@ class OwnerController {
      * @return void
      */
     public function modify() {
-        // Validar email y móvil, pero también obtener el ID del campo oculto
         $ownerInput=OwnerFormValidation::checkData(array_merge(OwnerFormValidation::MODIFY_FIELDS, array('id_hidden')));
 
         if (!empty($_SESSION['error'])) {
@@ -144,7 +143,6 @@ class OwnerController {
             $_SESSION['error'][]=OwnerMessage::ERR_DAO['update'];
         }
 
-        // Recuperar todo el objeto para mostrar los datos actualizados
         $owner=$this->model->getOwnerById($ownerInput->getId(), false);
 
         $this->view->display("view/form/OwnerFormModify.php", $owner);  
@@ -189,7 +187,9 @@ class OwnerController {
         return $owner;
     }
 
-    // shows home page
+    /**
+     * Displays the home page view
+     */
     public function showHome() {
         $this->view->display("view/HomePage.php");
     }

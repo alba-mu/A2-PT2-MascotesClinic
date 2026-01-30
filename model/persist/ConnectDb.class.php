@@ -18,8 +18,8 @@ class ConnectDb {
      * @return PDO|null PDO connection object on success, NULL on failure
      */
     public function getConnection() {
-        $hostname='192.168.143.230'; // servidor de bases de dades (maquina virtual - proven)
-        //$hostname='localhost'; // XAMPP local
+        $hostname='192.168.143.166'; // Database server (virtual machine - proven)
+        //$hostname='localhost'; // Local XAMPP
         $username='user';
         $password='password';
         $dbname='mascotesClinic';

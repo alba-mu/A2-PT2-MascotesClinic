@@ -64,4 +64,8 @@ class Pet {
     public function setHistory($history) {
         $this->history=$history;
     }
+
+    public function __toString() {
+        return sprintf("%s;%s;%s\n", $this->id, $this->nom, $this->propietari_id); // owner and history are excluded
+    }
 }

@@ -1,11 +1,14 @@
-/* ============================================
-   MASCOTES CLINIC - CUSTOM STYLES
-   Color Palette:
-   - Primary (Green): #469387
-   - Secondary (Orange): #e69739
-   - Accent (Yellow): #efc65d
-   - Light (Blue): #aad3dc
-   ============================================ */
+/**
+ * File: custom-style.css
+ * Description: Custom stylesheet for Mascotes Clinic application.
+ * Defines color scheme, component styles, and responsive design patterns.
+ * 
+ * Color Palette:
+ * - Primary (Green): #469387
+ * - Secondary (Orange): #e69739
+ * - Accent (Yellow): #efc65d
+ * - Light (Blue): #aad3dc
+ */
 
 /* ===== BACKGROUND & BODY ===== */
 body.clinic-body {

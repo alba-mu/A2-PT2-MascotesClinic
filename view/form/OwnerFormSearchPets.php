@@ -1,8 +1,14 @@
+<?php
+/**
+ * File: OwnerFormSearchPets.php
+ * Description: Form to search for an owner and display their registered pets.
+ * Shows owner id and a list of associated pets with details.
+ */
+?>
 <div id="content" class="container-fluid mt-4">
     <div class="container">
         <form method="post" action="">
             <div class="row g-4">
-                <!-- Sección de búsqueda por ID (izquierda) -->
                 <div class="col-12 col-md-5 col-lg-4">
                     <fieldset class="border-0 rounded-3 p-4 h-100 shadow-sm panel-search">
                         <legend class="float-none w-auto px-3 py-2 mb-3 rounded-2 text-white fw-bold legend-orange">
@@ -31,7 +37,6 @@
                     </fieldset>
                 </div>
 
-                <!-- Sección de mascotas (derecha) -->
                 <div class="col-12 col-md-7 col-lg-8">
                     <fieldset class="border-0 rounded-3 p-4 shadow-sm panel-light">
                         <legend class="float-none w-auto px-3 py-2 mb-4 rounded-2 text-white fw-bold legend-primary">

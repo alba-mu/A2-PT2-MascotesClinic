@@ -1,3 +1,10 @@
+<?php
+/**
+ * File: MessageForm.php
+ * Description: Displays success and error messages from session variables.
+ * Shows styled alert boxes for user feedback on operations.
+ */
+?>
 <div id="info" class="container mt-3">
     <?php
         if (!empty($_SESSION['info'])) {

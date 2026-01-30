@@ -24,6 +24,8 @@ class PetMessage {
         'invalid_date'   => 'La data ha de tenir format YYYY-MM-DD',
         'empty_motiu'    => 'El motiu és obligatori',
         'not_found'      => 'No s\'han trobat dades',
+        'pet_not_found'  => 'La mascota especificada no existeix a la base de dades',
+        'invalid_date_future' => 'La data no pot ser futura',
         '' => ''
     );
 
