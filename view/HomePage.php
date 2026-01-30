@@ -41,8 +41,8 @@
             <div class="col-md-4">
                 <div class="card h-100 border-0 shadow-sm card-border-light">
                     <div class="card-body text-center p-4">
-                        <i class="bi bi-pencil-square card-icon icon-primary"></i>
-                        <h5 class="card-title mt-3 mb-3 fw-bold title-primary">Actualització de l'Historial</h5>
+                        <i class="bi bi-pencil-square card-icon icon-light"></i>
+                        <h5 class="card-title mt-3 mb-3 fw-bold title-light">Actualització de l'Historial</h5>
                         <p class="card-text text-muted">Modifica les dades de l'historial de les mascotes mantenint la informació sempre actualitzada.</p>
                     </div>
                 </div>

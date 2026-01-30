@@ -332,12 +332,20 @@ html, body {
     color: #e69739;
 }
 
+.icon-light {
+    color: #aad3dc;
+}
+
 .title-primary {
     color: #469387;
 }
 
 .title-orange {
     color: #e69739;
+}
+
+.title-light {
+    color: #aad3dc;
 }
 
 .info-icon {
