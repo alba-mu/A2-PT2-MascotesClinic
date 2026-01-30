@@ -135,6 +135,17 @@ class OwnerController {
             return;
         }
 
+        // Fetch current owner data to compare
+        $currentOwner=$this->model->getOwnerById($ownerInput->getId(), false);
+        
+        // Check if there are actual changes
+        if ($currentOwner->getEmail() === $ownerInput->getEmail() && 
+            $currentOwner->getMovil() === $ownerInput->getMovil()) {
+            $_SESSION['error'][]=OwnerMessage::ERR_FORM['no_changes'];
+            $this->view->display("view/form/OwnerFormModify.php", $currentOwner);
+            return;
+        }
+
         $modified=$this->model->modify($ownerInput);
 
         if ($modified) {

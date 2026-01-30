@@ -28,6 +28,7 @@ class OwnerMessage {
             'invalid_email'  => 'L\'email ha de ser un valor vàlid',
             'not_exists_id' => 'L\'Id no existeix',
             'not_found'     => 'No s\'han trobat dades',
+            'no_changes' => 'No hi ha canvis per guardar',
             '' => ''
         );
 
