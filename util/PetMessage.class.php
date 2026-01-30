@@ -14,18 +14,19 @@ class PetMessage {
     );
 
     const ERR_FORM = array(
-        'empty_id'       => 'L\'Id és obligatori',
-        'invalid_id'     => 'L\'Id ha de ser un valor vàlid',
-        'empty_nom'      => 'El nom és obligatori',
-        'invalid_nom'    => 'El nom ha de ser un valor vàlid',
-        'empty_owner'    => 'El propietari és obligatori',
-        'invalid_owner'  => 'El propietari ha de ser un valor vàlid',
-        'empty_date'     => 'La data és obligatòria',
-        'invalid_date'   => 'La data ha de tenir format YYYY-MM-DD',
-        'empty_motiu'    => 'El motiu és obligatori',
-        'not_found'      => 'No s\'han trobat dades',
-        'pet_not_found'  => 'La mascota especificada no existeix a la base de dades',
-        'invalid_date_future' => 'La data no pot ser futura',
+        'empty_id'              => 'L\'Id és obligatori',
+        'invalid_id'            => 'L\'Id ha de ser un valor vàlid',
+        'empty_nom'             => 'El nom és obligatori',
+        'invalid_nom'           => 'El nom ha de ser un valor vàlid',
+        'empty_owner'           => 'El propietari és obligatori',
+        'invalid_owner'         => 'El propietari ha de ser un valor vàlid',
+        'empty_date'            => 'La data és obligatòria',
+        'invalid_date'          => 'La data ha de tenir format YYYY-MM-DD',
+        'empty_motiu'           => 'El motiu és obligatori',
+        'not_found'             => 'No s\'han trobat dades',
+        'pet_not_found'         => 'La mascota especificada no existeix a la base de dades',
+        'invalid_date_future'   => 'La data no pot ser futura',
+        'no_changes'            => 'No hi ha canvis per guardar',
         '' => ''
     );
 

@@ -29,9 +29,9 @@
                                     value="<?php if (isset($content) && $content != NULL) { echo $content->getId(); } ?>"
                                 />
                             </div>
-                            <div class="col-sm-3">
-                                <button type="submit" name="action" value="detail" class="btn btn-clinic-search btn-sm-lg w-100 shadow fw-semibold">
-                                    <i class="bi bi-search me-2"></i>Cercar
+                            <div class="col-sm-3 my-3">
+                                <button type="submit" name="action" value="detail" class="btn btn-clinic-search btn-sm-lg w-100 shadow fw-bold">
+                                    <i class="bi bi-search me-2 fw-bold"></i>Cercar
                                 </button>
                             </div>
                         </div>

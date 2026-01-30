@@ -152,6 +152,19 @@ class PetController {
             return;
         }
 
+        // Fetch current pet data to compare
+        $currentPet=$this->model->getPetById($petInput->getId(), false);
+        
+        // Check if there are actual changes
+        if ($currentPet->getNom() == $petInput->getNom() && 
+            $currentPet->getPropietariId() == $petInput->getPropietariId()) {
+            $_SESSION['error'][]=PetMessage::ERR_FORM['no_changes'];
+            $pets=$this->model->listAll();
+            $data=array('pets'=>$pets, 'pet'=>$currentPet);
+            $this->view->display("view/form/PetList.php", $data);
+            return;
+        }
+
         $modified=$this->model->modify($petInput);
 
         if ($modified) {

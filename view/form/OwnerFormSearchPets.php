@@ -23,7 +23,7 @@
                                 type="text"
                                 class="form-control form-control-lg border-0 shadow-sm input-search"
                                 id="idField"
-                                placeholder="Introdueix l'ID"
+                                placeholder="Introdueix l'ID del propietari"
                                 name="id"
                                 value="<?php if (isset($content) && $content != NULL) { echo $content->getId(); } ?>"
                             />
