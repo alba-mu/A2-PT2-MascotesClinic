@@ -20,7 +20,7 @@
                         </label>
                         <input 
                             type="text" 
-                            class="form-control border-2 shadow-sm" 
+                            class="form-control border-2 shadow-sm input-standard 
                             id="pet_id" 
                             name="pet_id" 
                             placeholder="Ex: 101" 
@@ -45,7 +45,7 @@
                         </label>
                         <input 
                             type="date" 
-                            class="form-control border-2 shadow-sm" 
+                            class="form-control border-2 shadow-sm input-standard " 
                             id="data" 
                             name="data" 
                             value="<?php 
@@ -65,7 +65,7 @@
                         </label>
                         <input 
                             type="text" 
-                            class="form-control border-2 shadow-sm" 
+                            class="form-control border-2 shadow-sm input-standard " 
                             id="motiu" 
                             name="motiu" 
                             placeholder="Ex: Revisió, Vacuna, Tractament, etc." 
@@ -85,7 +85,7 @@
                             <i class="bi bi-journal-text me-1"></i>Descripció de la visita <span class="text-danger">*</span>
                         </label>
                         <textarea 
-                            class="form-control border-2 shadow-sm" 
+                            class="form-control border-2 shadow-sm input-standard " 
                             id="descripcio" 
                             name="descripcio" 
                             placeholder="Introduïu una descripció detallada de la visita, diagnòstic, tractament aplicat, etc."
